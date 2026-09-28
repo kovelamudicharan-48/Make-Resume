@@ -8,637 +8,666 @@
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:"Segoe UI",Arial,sans-serif;
-  min-height:100vh;
-  color:#172554;
-  overflow-x:hidden;
-  background:
-    radial-gradient(circle at 10% 15%,rgba(99,102,241,.20),transparent 28%),
-    radial-gradient(circle at 90% 80%,rgba(14,165,233,.18),transparent 30%),
-    linear-gradient(135deg,#f8fbff,#eef3ff);
+    font-family:Arial, Helvetica, sans-serif;
+    min-height:100vh;
+    color:#fff;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(0,255,255,.15), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(150,80,255,.2), transparent 25%),
+        linear-gradient(135deg,#050816,#0b1026,#111936);
 }
 
-/* BACKGROUND */
-.bg{
-  position:fixed;
-  border-radius:50%;
-  pointer-events:none;
-  filter:blur(3px);
-  z-index:-1;
+/* ================= BACKGROUND ================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-2;
 }
 
-.bg1{
-  width:380px;
-  height:380px;
-  top:-180px;
-  left:-150px;
-  background:rgba(79,70,229,.12);
-  animation:float1 8s ease-in-out infinite alternate;
+.blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(5px);
+    opacity:.45;
+    animation:floatBlob 10s ease-in-out infinite alternate;
 }
 
-.bg2{
-  width:320px;
-  height:320px;
-  right:-130px;
-  bottom:-140px;
-  background:rgba(14,165,233,.13);
-  animation:float2 9s ease-in-out infinite alternate;
+.blob1{
+    width:350px;
+    height:350px;
+    background:#00e5ff;
+    left:-120px;
+    top:100px;
 }
 
-.bg3{
-  width:150px;
-  height:150px;
-  top:35%;
-  right:38%;
-  background:rgba(139,92,246,.08);
-  animation:pulse 5s infinite;
+.blob2{
+    width:400px;
+    height:400px;
+    background:#8b5cf6;
+    right:-150px;
+    top:200px;
+    animation-delay:2s;
 }
 
-@keyframes float1{
-  to{transform:translate(40px,35px);}
+.blob3{
+    width:250px;
+    height:250px;
+    background:#ec4899;
+    left:40%;
+    bottom:-100px;
+    animation-delay:4s;
 }
 
-@keyframes float2{
-  to{transform:translate(-30px,-25px);}
+@keyframes floatBlob{
+    0%{
+        transform:translate(0,0) scale(1);
+    }
+    100%{
+        transform:translate(70px,-50px) scale(1.15);
+    }
 }
 
-@keyframes pulse{
-  50%{transform:scale(1.2);opacity:.5;}
+/* particles */
+
+.particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    opacity:.5;
+    animation:particleMove 8s linear infinite;
 }
 
-/* NAVBAR */
+.p1{left:10%;top:30%;animation-delay:0s}
+.p2{left:25%;top:70%;animation-delay:2s}
+.p3{left:50%;top:20%;animation-delay:4s}
+.p4{left:75%;top:65%;animation-delay:1s}
+.p5{left:90%;top:35%;animation-delay:3s}
+.p6{left:60%;top:85%;animation-delay:5s}
+
+@keyframes particleMove{
+    0%{
+        transform:translateY(0);
+        opacity:.2;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+
+/* ================= NAVBAR ================= */
+
 .navbar{
-  width:min(1180px,92%);
-  margin:22px auto 0;
-  padding:15px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:18px;
-  box-shadow:0 12px 35px rgba(30,64,175,.09);
-  backdrop-filter:blur(18px);
-  animation:down .8s ease;
+    width:100%;
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    z-index:10;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:19px;
-  font-weight:800;
-  color:#172554;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:22px;
+    font-weight:bold;
+    letter-spacing:.5px;
 }
 
-.brand-icon{
-  width:38px;
-  height:38px;
-  border-radius:11px;
-  display:grid;
-  place-items:center;
-  color:white;
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
-  box-shadow:0 7px 18px rgba(79,70,229,.25);
+.logoIcon{
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:13px;
+    background:linear-gradient(135deg,#00e5ff,#8b5cf6);
+    box-shadow:0 0 25px rgba(0,229,255,.4);
+    animation:logoPulse 2s infinite;
 }
 
-.nav-tag{
-  font-size:12px;
-  font-weight:600;
-  color:#64748b;
+@keyframes logoPulse{
+    50%{
+        box-shadow:0 0 40px rgba(139,92,246,.7);
+    }
 }
 
-@keyframes down{
-  from{opacity:0;transform:translateY(-20px);}
-  to{opacity:1;transform:translateY(0);}
+.navBadge{
+    padding:9px 16px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(15px);
+    font-size:13px;
+    color:#cbd5e1;
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero{
-  width:min(1180px,92%);
-  min-height:calc(100vh - 95px);
-  margin:auto;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  align-items:center;
-  gap:50px;
-  padding:55px 0;
+    min-height:calc(100vh - 90px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:70px;
+    padding:40px 7% 80px;
+    max-width:1500px;
+    margin:auto;
 }
 
-/* LEFT */
-.hero-content{
-  animation:leftIn 1s ease;
+.heroLeft{
+    flex:1;
+    max-width:680px;
+    animation:heroLeft 1s ease forwards;
 }
 
-@keyframes leftIn{
-  from{opacity:0;transform:translateX(-45px);}
-  to{opacity:1;transform:translateX(0);}
+@keyframes heroLeft{
+    from{
+        opacity:0;
+        transform:translateX(-60px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
 }
 
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 15px;
-  margin-bottom:24px;
-  border-radius:30px;
-  background:rgba(255,255,255,.75);
-  border:1px solid #dbe5ff;
-  color:#3155b8;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
-  box-shadow:0 8px 25px rgba(37,99,235,.07);
+.smallTitle{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 16px;
+    border:1px solid rgba(0,229,255,.3);
+    background:rgba(0,229,255,.07);
+    border-radius:30px;
+    color:#67e8f9;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:25px;
 }
 
-.badge-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#22c55e;
-  box-shadow:0 0 0 5px rgba(34,197,94,.12);
+.smallTitle span{
+    width:8px;
+    height:8px;
+    background:#22d3ee;
+    border-radius:50%;
+    box-shadow:0 0 15px #22d3ee;
+    animation:dotPulse 1.5s infinite;
+}
+
+@keyframes dotPulse{
+    50%{
+        transform:scale(1.8);
+        opacity:.4;
+    }
 }
 
 h1{
-  font-size:clamp(45px,6vw,76px);
-  line-height:1.02;
-  letter-spacing:-4px;
-  font-weight:850;
-  color:#13245a;
-  margin-bottom:25px;
+    font-size:clamp(48px,6vw,82px);
+    line-height:1.02;
+    letter-spacing:-4px;
+    margin-bottom:25px;
 }
 
-.gradient-text{
-  background:linear-gradient(90deg,#2563eb,#4f46e5,#9333ea);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.gradientText{
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #67e8f9,
+        #a78bfa,
+        #f0abfc,
+        #ffffff
+    );
+    background-size:300% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:gradientMove 5s linear infinite;
 }
 
-.description{
-  max-width:570px;
-  color:#64748b;
-  font-size:17px;
-  line-height:1.75;
-  margin-bottom:28px;
+@keyframes gradientMove{
+    to{
+        background-position:300% center;
+    }
 }
 
-/* FEATURES */
-.features{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:32px;
+.subtitle{
+    font-size:18px;
+    line-height:1.8;
+    color:#aebbd0;
+    max-width:610px;
+    margin-bottom:32px;
 }
 
-.feature{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 13px;
-  border-radius:10px;
-  background:rgba(255,255,255,.70);
-  border:1px solid #e1e8f5;
-  color:#475569;
-  font-size:12px;
-  font-weight:700;
-  transition:.3s;
+/* ================= BUTTON ================= */
+
+.buttons{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
 }
 
-.feature:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 25px rgba(37,99,235,.10);
+.startBtn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:16px;
+    padding:17px 25px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:15px;
+    overflow:hidden;
+    background:linear-gradient(135deg,#06b6d4,#7c3aed);
+    box-shadow:
+        0 10px 35px rgba(6,182,212,.25),
+        0 0 0 1px rgba(255,255,255,.1);
+    transition:.3s;
 }
 
-.check{
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:#2563eb;
-  background:#e8efff;
-  font-size:11px;
+.startBtn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:80%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+    transform:skewX(-20deg);
+    animation:shine 3s infinite;
 }
 
-/* BUTTON */
-.cta-area{
-  display:flex;
-  align-items:center;
-  gap:18px;
+@keyframes shine{
+    0%{left:-120%}
+    45%,100%{left:140%}
 }
 
-.start-btn{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:13px;
-  padding:16px 27px;
-  border-radius:13px;
-  text-decoration:none;
-  color:white;
-  font-size:15px;
-  font-weight:800;
-  background:linear-gradient(135deg,#1d4ed8,#4f46e5,#7c3aed);
-  box-shadow:0 14px 30px rgba(37,99,235,.28);
-  overflow:hidden;
-  transition:.3s;
-}
-
-.start-btn:hover{
-  transform:translateY(-5px);
-  box-shadow:0 20px 40px rgba(37,99,235,.35);
-}
-
-.start-btn:active{
-  transform:scale(.96);
+.startBtn:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:
+        0 20px 50px rgba(124,58,237,.45),
+        0 0 35px rgba(6,182,212,.2);
 }
 
 .arrow{
-  font-size:21px;
-  transition:.3s;
+    font-size:23px;
+    transition:.3s;
 }
 
-.start-btn:hover .arrow{
-  transform:translateX(6px);
+.startBtn:hover .arrow{
+    transform:translateX(7px);
 }
 
-.start-btn::after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-120%;
-  width:70%;
-  height:100%;
-  transform:skewX(-25deg);
-  background:rgba(255,255,255,.25);
-  transition:.7s;
+.watch{
+    color:#cbd5e1;
+    font-size:14px;
 }
 
-.start-btn:hover::after{
-  left:140%;
+/* ================= FEATURES ================= */
+
+.features{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:35px;
 }
 
-.fast{
-  color:#94a3b8;
-  font-size:11px;
+.feature{
+    padding:10px 15px;
+    border-radius:12px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.09);
+    color:#b9c5d8;
+    font-size:13px;
+    transition:.3s;
 }
 
-/* RIGHT */
-.visual{
-  position:relative;
-  height:520px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  animation:rightIn 1.2s ease;
+.feature:hover{
+    transform:translateY(-4px);
+    border-color:rgba(103,232,249,.4);
+    background:rgba(103,232,249,.08);
+    color:#fff;
 }
 
-@keyframes rightIn{
-  from{opacity:0;transform:translateX(50px) scale(.9);}
-  to{opacity:1;transform:translateX(0) scale(1);}
+/* ================= RESUME PREVIEW ================= */
+
+.heroRight{
+    flex:1;
+    min-height:570px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    animation:heroRight 1.2s ease forwards;
 }
 
-.glow{
-  position:absolute;
-  width:390px;
-  height:390px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(79,70,229,.18),transparent 68%);
-  animation:glow 4s ease-in-out infinite;
+@keyframes heroRight{
+    from{
+        opacity:0;
+        transform:translateX(70px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0) scale(1);
+    }
 }
 
-@keyframes glow{
-  50%{transform:scale(1.12);}
+.resumeGlow{
+    position:absolute;
+    width:470px;
+    height:470px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(34,211,238,.22),
+        rgba(124,58,237,.12),
+        transparent 70%
+    );
+    animation:glowPulse 4s ease-in-out infinite;
 }
 
-/* RESUME */
-.resume{
-  position:relative;
-  z-index:2;
-  width:290px;
-  height:390px;
-  padding:28px;
-  border-radius:15px;
-  background:white;
-  box-shadow:
-    0 30px 70px rgba(15,23,42,.22),
-    0 0 0 1px rgba(255,255,255,.8);
-  transform:rotate(4deg);
-  animation:resumeFloat 4s ease-in-out infinite;
+@keyframes glowPulse{
+    50%{
+        transform:scale(1.15);
+        opacity:.7;
+    }
 }
 
-@keyframes resumeFloat{
-  50%{
-    transform:rotate(1deg) translateY(-15px);
-  }
+.resumeCard{
+    position:relative;
+    width:370px;
+    min-height:500px;
+    background:#fff;
+    color:#182033;
+    border-radius:12px;
+    padding:30px;
+    transform:rotate(4deg);
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.55),
+        0 0 70px rgba(34,211,238,.12);
+    animation:cardFloat 5s ease-in-out infinite;
+    z-index:2;
 }
 
-.resume-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding-bottom:20px;
-  border-bottom:1px solid #edf1f7;
+@keyframes cardFloat{
+    0%,100%{
+        transform:rotate(4deg) translateY(0);
+    }
+    50%{
+        transform:rotate(1deg) translateY(-18px);
+    }
+}
+
+.paperTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:2px solid #e5e7eb;
+    padding-bottom:18px;
+    margin-bottom:20px;
 }
 
 .avatar{
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#bfdbfe,#c4b5fd);
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#06b6d4,#7c3aed);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:25px;
+    font-weight:bold;
 }
 
-.lines{
-  flex:1;
+.paperName{
+    flex:1;
+    padding-left:15px;
 }
 
-.name{
-  height:11px;
-  width:80%;
-  border-radius:10px;
-  background:#dbe5f7;
-  margin-bottom:8px;
+.paperName h3{
+    font-size:20px;
+    margin-bottom:5px;
 }
 
-.role{
-  height:7px;
-  width:55%;
-  border-radius:10px;
-  background:#edf1f7;
+.paperName p{
+    font-size:11px;
+    color:#64748b;
 }
 
-.section{
-  margin-top:24px;
+.paperLine{
+    height:9px;
+    border-radius:5px;
+    background:#e5e7eb;
+    margin:12px 0;
 }
 
-.section-title{
-  width:72px;
-  height:8px;
-  border-radius:10px;
-  background:#315fc4;
-  margin-bottom:12px;
+.short{
+    width:55%;
 }
 
-.line{
-  height:6px;
-  border-radius:10px;
-  background:#edf1f7;
-  margin-bottom:8px;
+.medium{
+    width:75%;
 }
 
-.long{width:100%;}
-.medium{width:80%;}
-.short{width:60%;}
+.long{
+    width:95%;
+}
 
-.skills{
-  display:flex;
-  gap:7px;
+.sectionTitle{
+    font-size:11px;
+    font-weight:bold;
+    color:#7c3aed;
+    margin-top:22px;
+    margin-bottom:8px;
+}
+
+.paperSkills{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
 }
 
 .skill{
-  width:48px;
-  height:17px;
-  border-radius:20px;
-  background:#e8efff;
+    padding:5px 8px;
+    border-radius:5px;
+    background:#eef2ff;
+    color:#4f46e5;
+    font-size:8px;
 }
 
-/* FLOATING CARDS */
-.float-card{
-  position:absolute;
-  z-index:5;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 15px;
-  background:rgba(255,255,255,.94);
-  border:1px solid rgba(255,255,255,.95);
-  border-radius:12px;
-  box-shadow:0 15px 35px rgba(15,23,42,.14);
-  backdrop-filter:blur(12px);
-}
+/* ================= FLOATING BADGES ================= */
 
-.float-card strong{
-  display:block;
-  font-size:11px;
-  color:#1e293b;
-}
-
-.float-card small{
-  display:block;
-  margin-top:3px;
-  font-size:9px;
-  color:#94a3b8;
-}
-
-.icon{
-  width:30px;
-  height:30px;
-  display:grid;
-  place-items:center;
-  border-radius:8px;
-  background:#e8f0ff;
-  color:#2563eb;
-  font-weight:800;
-}
-
-.card-left{
-  left:10px;
-  top:100px;
-  animation:card1 4s ease-in-out infinite;
-}
-
-.card-right{
-  right:0;
-  bottom:105px;
-  animation:card2 4s ease-in-out infinite;
-}
-
-@keyframes card1{
-  50%{transform:translateY(-12px);}
-}
-
-@keyframes card2{
-  50%{transform:translateY(12px);}
-}
-
-/* SCORE */
-.score{
-  position:absolute;
-  z-index:6;
-  right:20px;
-  top:55px;
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  background:white;
-  border:5px solid #edf2ff;
-  box-shadow:0 15px 35px rgba(15,23,42,.13);
-  animation:score 4s ease-in-out infinite;
-}
-
-.score b{
-  font-size:17px;
-  color:#315fc4;
-}
-
-.score small{
-  font-size:8px;
-  color:#94a3b8;
-}
-
-@keyframes score{
-  50%{transform:translateY(-8px) rotate(4deg);}
-}
-
-/* FOOTER */
-.footer{
-  position:absolute;
-  bottom:18px;
-  left:0;
-  width:100%;
-  text-align:center;
-  color:#94a3b8;
-  font-size:11px;
-}
-
-/* TABLET */
-@media(max-width:900px){
-
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    padding-top:55px;
-  }
-
-  .hero-content{
+.floatBadge{
+    position:absolute;
+    z-index:5;
+    padding:13px 17px;
+    border-radius:14px;
+    background:rgba(15,23,42,.78);
+    border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
     display:flex;
-    flex-direction:column;
     align-items:center;
-  }
-
-  .description{
-    max-width:650px;
-  }
-
-  .visual{
-    height:470px;
-  }
-
-  h1{
-    font-size:55px;
-  }
-
-  .cta-area{
-    justify-content:center;
-  }
+    gap:10px;
+    animation:badgeFloat 4s ease-in-out infinite;
 }
 
-/* MOBILE */
+.floatBadge strong{
+    display:block;
+    font-size:13px;
+}
+
+.floatBadge small{
+    color:#94a3b8;
+    font-size:10px;
+}
+
+.badge1{
+    top:50px;
+    right:20px;
+}
+
+.badge2{
+    bottom:70px;
+    left:10px;
+    animation-delay:1s;
+}
+
+.badge3{
+    top:220px;
+    left:-15px;
+    animation-delay:2s;
+}
+
+.badgeIcon{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(34,211,238,.12);
+}
+
+@keyframes badgeFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* ================= BOTTOM ================= */
+
+.bottomText{
+    text-align:center;
+    padding:0 20px 40px;
+    color:#64748b;
+    font-size:12px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:50px;
+    }
+
+    .heroLeft{
+        max-width:800px;
+    }
+
+    .buttons,
+    .features{
+        justify-content:center;
+    }
+
+    .heroRight{
+        width:100%;
+        min-height:550px;
+    }
+
+    h1{
+        letter-spacing:-2px;
+    }
+}
+
 @media(max-width:600px){
 
-  .navbar{
-    width:94%;
-    padding:12px 15px;
-  }
+    .navbar{
+        padding:18px 5%;
+    }
 
-  .brand{
-    font-size:15px;
-  }
+    .navBadge{
+        display:none;
+    }
 
-  .brand-icon{
-    width:33px;
-    height:33px;
-  }
+    .logo{
+        font-size:18px;
+    }
 
-  .nav-tag{
-    display:none;
-  }
+    .logoIcon{
+        width:38px;
+        height:38px;
+    }
 
-  .hero{
-    width:94%;
-    padding:45px 0 70px;
-  }
+    .hero{
+        padding:35px 5% 60px;
+        gap:20px;
+    }
 
-  h1{
-    font-size:42px;
-    letter-spacing:-2px;
-  }
+    h1{
+        font-size:46px;
+    }
 
-  .description{
-    font-size:15px;
-  }
+    .subtitle{
+        font-size:15px;
+    }
 
-  .features{
-    justify-content:center;
-  }
+    .resumeCard{
+        width:290px;
+        min-height:410px;
+        padding:22px;
+    }
 
-  .cta-area{
-    flex-direction:column;
-  }
+    .heroRight{
+        min-height:470px;
+    }
 
-  .visual{
-    width:100%;
-    height:390px;
-  }
+    .resumeGlow{
+        width:350px;
+        height:350px;
+    }
 
-  .resume{
-    width:225px;
-    height:305px;
-    padding:22px;
-  }
+    .badge1{
+        right:-5px;
+        top:30px;
+    }
 
-  .card-left{
-    left:-2px;
-    top:65px;
-  }
+    .badge2{
+        left:-5px;
+        bottom:40px;
+    }
 
-  .card-right{
-    right:-2px;
-    bottom:55px;
-  }
+    .badge3{
+        left:-5px;
+        top:180px;
+    }
 
-  .score{
-    right:0;
-    top:30px;
-    width:65px;
-    height:65px;
-  }
-
-  .footer{
-    position:relative;
-    margin-top:20px;
-  }
-}
-
-@media(max-width:400px){
-
-  h1{
-    font-size:36px;
-  }
-
-  .resume{
-    width:205px;
-    height:285px;
-  }
-
-  .float-card{
-    padding:9px 11px;
-  }
+    .floatBadge{
+        padding:9px 12px;
+    }
 }
 </style>
 </head>
@@ -646,179 +675,270 @@ h1{
 <body>
 
 <!-- BACKGROUND -->
-<div class="bg bg1"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+
+<div class="background">
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
+    <div class="particle p6"></div>
+
+</div>
+
 
 <!-- NAVBAR -->
+
 <nav class="navbar">
 
-  <div class="brand">
-    <div class="brand-icon">CV</div>
-    Resume Builder Pro
-  </div>
+    <div class="logo">
 
-  <div class="nav-tag">
-    Build • Customize • Succeed
-  </div>
+        <div class="logoIcon">
+            📄
+        </div>
+
+        Resume Builder Pro
+
+    </div>
+
+    <div class="navBadge">
+        ✦ Build Your Future
+    </div>
 
 </nav>
 
+
 <!-- HERO -->
+
 <main class="hero">
 
-  <!-- LEFT -->
-  <section class="hero-content">
+    <!-- LEFT -->
 
-    <div class="badge">
-      <span class="badge-dot"></span>
-      SMART & PROFESSIONAL RESUME BUILDER
-    </div>
+    <section class="heroLeft">
 
-    <h1>
-      Build a Resume<br>
-      <span class="gradient-text">That Gets Noticed.</span>
-    </h1>
-
-    <p class="description">
-      Create a modern, professional and job-ready resume
-      in just a few minutes. Showcase your skills,
-      education, projects and achievements with confidence.
-    </p>
-
-    <div class="features">
-
-      <div class="feature">
-        <span class="check">✓</span>
-        Professional Design
-      </div>
-
-      <div class="feature">
-        <span class="check">✓</span>
-        Easy Customization
-      </div>
-
-      <div class="feature">
-        <span class="check">✓</span>
-        Print & PDF Ready
-      </div>
-
-    </div>
-
-    <div class="cta-area">
-
-      <!-- KEEP THIS LINK -->
-      <a href="resume.html" class="start-btn">
-        Create My Resume
-        <span class="arrow">→</span>
-      </a>
-
-      <span class="fast">
-        ⚡ Fast &nbsp; • &nbsp; Simple &nbsp; • &nbsp; Professional
-      </span>
-
-    </div>
-
-  </section>
-
-
-  <!-- RIGHT -->
-  <section class="visual">
-
-    <div class="glow"></div>
-
-    <!-- RESUME PREVIEW -->
-    <div class="resume">
-
-      <div class="resume-header">
-
-        <div class="avatar"></div>
-
-        <div class="lines">
-          <div class="name"></div>
-          <div class="role"></div>
+        <div class="smallTitle">
+            <span></span>
+            SMART RESUME BUILDER
         </div>
 
-      </div>
+
+        <h1>
+
+            Build a Resume
+            <br>
+
+            <span class="gradientText">
+                That Gets Noticed.
+            </span>
+
+        </h1>
 
 
-      <div class="section">
+        <p class="subtitle">
 
-        <div class="section-title"></div>
+            Create a professional, modern and job-ready
+            resume in just a few minutes. Showcase your
+            skills, education, projects and achievements
+            with confidence.
 
-        <div class="line long"></div>
-        <div class="line medium"></div>
-        <div class="line short"></div>
-
-      </div>
-
-
-      <div class="section">
-
-        <div class="section-title"></div>
-
-        <div class="line long"></div>
-        <div class="line medium"></div>
-        <div class="line short"></div>
-
-      </div>
+        </p>
 
 
-      <div class="section">
+        <div class="buttons">
 
-        <div class="section-title"></div>
+            <a href="resume.html" class="startBtn">
 
-        <div class="skills">
-          <span class="skill"></span>
-          <span class="skill"></span>
-          <span class="skill"></span>
+                Create My Resume
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+            <span class="watch">
+                ⚡ Fast & Easy
+            </span>
+
         </div>
 
-      </div>
 
-    </div>
+        <div class="features">
 
+            <div class="feature">
+                ✨ Modern Design
+            </div>
 
-    <!-- FLOATING CARD 1 -->
-    <div class="float-card card-left">
+            <div class="feature">
+                🎨 Easy Customization
+            </div>
 
-      <div class="icon">✓</div>
+            <div class="feature">
+                📄 Print & PDF Ready
+            </div>
 
-      <div>
-        <strong>Resume Ready</strong>
-        <small>Professional CV</small>
-      </div>
+        </div>
 
-    </div>
-
-
-    <!-- FLOATING CARD 2 -->
-    <div class="float-card card-right">
-
-      <div class="icon">★</div>
-
-      <div>
-        <strong>Job Ready</strong>
-        <small>Stand out today</small>
-      </div>
-
-    </div>
+    </section>
 
 
-    <!-- SCORE -->
-    <div class="score">
-      <b>98%</b>
-      <small>Professional</small>
-    </div>
+    <!-- RIGHT -->
 
-  </section>
+    <section class="heroRight">
+
+        <div class="resumeGlow"></div>
+
+
+        <!-- RESUME -->
+
+        <div class="resumeCard">
+
+            <div class="paperTop">
+
+                <div class="avatar">
+                    CK
+                </div>
+
+                <div class="paperName">
+
+                    <h3>
+                        Your Name
+                    </h3>
+
+                    <p>
+                        Software Developer
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="sectionTitle">
+                PROFILE
+            </div>
+
+            <div class="paperLine long"></div>
+            <div class="paperLine medium"></div>
+            <div class="paperLine short"></div>
+
+
+            <div class="sectionTitle">
+                EDUCATION
+            </div>
+
+            <div class="paperLine long"></div>
+            <div class="paperLine medium"></div>
+
+
+            <div class="sectionTitle">
+                SKILLS
+            </div>
+
+            <div class="paperSkills">
+
+                <span class="skill">Java</span>
+                <span class="skill">Python</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">SQL</span>
+
+            </div>
+
+
+            <div class="sectionTitle">
+                PROJECTS
+            </div>
+
+            <div class="paperLine long"></div>
+            <div class="paperLine medium"></div>
+            <div class="paperLine short"></div>
+
+
+            <div class="sectionTitle">
+                EXPERIENCE
+            </div>
+
+            <div class="paperLine long"></div>
+            <div class="paperLine medium"></div>
+
+        </div>
+
+
+        <!-- FLOATING BADGES -->
+
+        <div class="floatBadge badge1">
+
+            <div class="badgeIcon">
+                ✨
+            </div>
+
+            <div>
+                <strong>
+                    Resume Ready
+                </strong>
+
+                <small>
+                    Professional design
+                </small>
+            </div>
+
+        </div>
+
+
+        <div class="floatBadge badge2">
+
+            <div class="badgeIcon">
+                🚀
+            </div>
+
+            <div>
+                <strong>
+                    Job Ready
+                </strong>
+
+                <small>
+                    Showcase your skills
+                </small>
+            </div>
+
+        </div>
+
+
+        <div class="floatBadge badge3">
+
+            <div class="badgeIcon">
+                ✓
+            </div>
+
+            <div>
+                <strong>
+                    98% Professional
+                </strong>
+
+                <small>
+                    Clean & modern
+                </small>
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
 
-<footer class="footer">
-  © 2026 Resume Builder Pro &nbsp; • &nbsp; Create. Customize. Succeed.
-</footer>
+<div class="bottomText">
+
+    © 2026 Resume Builder Pro · Create your future with confidence.
+
+</div>
+
 
 </body>
 </html>
