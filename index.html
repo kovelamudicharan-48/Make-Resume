@@ -18,97 +18,130 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    min-height:100vh;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:#050816;
     color:#fff;
     overflow-x:hidden;
-    background:
-        radial-gradient(circle at 10% 20%, rgba(0,255,255,.15), transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(150,80,255,.2), transparent 25%),
-        linear-gradient(135deg,#050816,#0b1026,#111936);
 }
 
 /* ================= BACKGROUND ================= */
 
-.background{
+body::before{
+    content:"";
     position:fixed;
     inset:0;
-    overflow:hidden;
-    z-index:-2;
+    z-index:-5;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(0,229,255,.16),transparent 25%),
+        radial-gradient(circle at 85% 25%,rgba(124,58,237,.18),transparent 28%),
+        radial-gradient(circle at 50% 100%,rgba(236,72,153,.12),transparent 30%),
+        #050816;
 }
 
-.blob{
-    position:absolute;
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    opacity:.16;
+    background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+/* animated orbs */
+
+.orb{
+    position:fixed;
     border-radius:50%;
-    filter:blur(5px);
-    opacity:.45;
-    animation:floatBlob 10s ease-in-out infinite alternate;
+    filter:blur(4px);
+    pointer-events:none;
+    z-index:-3;
 }
 
-.blob1{
-    width:350px;
-    height:350px;
-    background:#00e5ff;
-    left:-120px;
-    top:100px;
+.orb.one{
+    width:320px;
+    height:320px;
+    background:#06b6d4;
+    left:-130px;
+    top:180px;
+    opacity:.18;
+    animation:orb1 12s ease-in-out infinite alternate;
 }
 
-.blob2{
+.orb.two{
     width:400px;
     height:400px;
-    background:#8b5cf6;
-    right:-150px;
-    top:200px;
-    animation-delay:2s;
+    background:#7c3aed;
+    right:-180px;
+    top:100px;
+    opacity:.2;
+    animation:orb2 14s ease-in-out infinite alternate;
 }
 
-.blob3{
-    width:250px;
-    height:250px;
+.orb.three{
+    width:260px;
+    height:260px;
     background:#ec4899;
-    left:40%;
-    bottom:-100px;
-    animation-delay:4s;
+    left:45%;
+    bottom:-160px;
+    opacity:.13;
+    animation:orb3 10s ease-in-out infinite alternate;
 }
 
-@keyframes floatBlob{
-    0%{
-        transform:translate(0,0) scale(1);
+@keyframes orb1{
+    to{
+        transform:translate(180px,-80px) scale(1.2);
     }
-    100%{
-        transform:translate(70px,-50px) scale(1.15);
+}
+
+@keyframes orb2{
+    to{
+        transform:translate(-150px,100px) scale(.85);
+    }
+}
+
+@keyframes orb3{
+    to{
+        transform:translate(100px,-130px) scale(1.25);
     }
 }
 
 /* particles */
 
-.particle{
-    position:absolute;
-    width:5px;
-    height:5px;
-    background:white;
+.particles span{
+    position:fixed;
+    width:4px;
+    height:4px;
     border-radius:50%;
-    opacity:.5;
-    animation:particleMove 8s linear infinite;
+    background:#fff;
+    opacity:.35;
+    z-index:-2;
+    animation:particle 8s linear infinite;
 }
 
-.p1{left:10%;top:30%;animation-delay:0s}
-.p2{left:25%;top:70%;animation-delay:2s}
-.p3{left:50%;top:20%;animation-delay:4s}
-.p4{left:75%;top:65%;animation-delay:1s}
-.p5{left:90%;top:35%;animation-delay:3s}
-.p6{left:60%;top:85%;animation-delay:5s}
+.particles span:nth-child(1){left:8%;top:70%;animation-delay:0s}
+.particles span:nth-child(2){left:18%;top:25%;animation-delay:2s}
+.particles span:nth-child(3){left:35%;top:80%;animation-delay:4s}
+.particles span:nth-child(4){left:52%;top:18%;animation-delay:1s}
+.particles span:nth-child(5){left:70%;top:65%;animation-delay:3s}
+.particles span:nth-child(6){left:88%;top:30%;animation-delay:5s}
+.particles span:nth-child(7){left:93%;top:80%;animation-delay:1.5s}
+.particles span:nth-child(8){left:45%;top:50%;animation-delay:3.5s}
 
-@keyframes particleMove{
+@keyframes particle{
     0%{
-        transform:translateY(0);
-        opacity:.2;
+        transform:translateY(0) scale(.7);
+        opacity:0;
     }
-    50%{
-        opacity:1;
+
+    30%{
+        opacity:.7;
     }
+
     100%{
-        transform:translateY(-120px);
+        transform:translateY(-180px) scale(1.4);
         opacity:0;
     }
 }
@@ -116,258 +149,309 @@ body{
 /* ================= NAVBAR ================= */
 
 .navbar{
-    width:100%;
-    padding:22px 7%;
+    height:82px;
+    padding:0 7%;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(5,8,22,.5);
+    backdrop-filter:blur(18px);
     position:relative;
-    z-index:10;
+    z-index:20;
 }
 
 .logo{
     display:flex;
     align-items:center;
     gap:12px;
-    font-size:22px;
-    font-weight:bold;
-    letter-spacing:.5px;
+    font-size:20px;
+    font-weight:800;
 }
 
-.logoIcon{
-    width:44px;
-    height:44px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.logoBox{
+    width:42px;
+    height:42px;
     border-radius:13px;
-    background:linear-gradient(135deg,#00e5ff,#8b5cf6);
-    box-shadow:0 0 25px rgba(0,229,255,.4);
-    animation:logoPulse 2s infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+    background:linear-gradient(135deg,#06b6d4,#7c3aed);
+    box-shadow:0 0 30px rgba(6,182,212,.3);
+    animation:logo 3s ease-in-out infinite;
 }
 
-@keyframes logoPulse{
+@keyframes logo{
     50%{
-        box-shadow:0 0 40px rgba(139,92,246,.7);
+        transform:rotate(5deg) scale(1.08);
+        box-shadow:0 0 45px rgba(124,58,237,.6);
     }
 }
 
-.navBadge{
+.navRight{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.status{
     padding:9px 16px;
-    border:1px solid rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.1);
     border-radius:30px;
-    background:rgba(255,255,255,.06);
-    backdrop-filter:blur(15px);
-    font-size:13px;
+    background:rgba(255,255,255,.04);
     color:#cbd5e1;
+    font-size:12px;
+}
+
+.status i{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#22c55e;
+    margin-right:7px;
+    box-shadow:0 0 12px #22c55e;
+    animation:statusPulse 1.5s infinite;
+}
+
+@keyframes statusPulse{
+    50%{transform:scale(1.6);opacity:.5}
 }
 
 /* ================= HERO ================= */
 
 .hero{
-    min-height:calc(100vh - 90px);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:70px;
-    padding:40px 7% 80px;
-    max-width:1500px;
+    min-height:calc(100vh - 82px);
+    max-width:1450px;
     margin:auto;
+    padding:65px 7% 80px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:50px;
 }
 
-.heroLeft{
-    flex:1;
-    max-width:680px;
-    animation:heroLeft 1s ease forwards;
+/* LEFT */
+
+.heroContent{
+    animation:heroIn 1s ease both;
 }
 
-@keyframes heroLeft{
+@keyframes heroIn{
     from{
         opacity:0;
-        transform:translateX(-60px);
+        transform:translateY(45px);
     }
     to{
         opacity:1;
-        transform:translateX(0);
+        transform:translateY(0);
     }
 }
 
-.smallTitle{
+.eyebrow{
     display:inline-flex;
     align-items:center;
-    gap:8px;
-    padding:9px 16px;
-    border:1px solid rgba(0,229,255,.3);
-    background:rgba(0,229,255,.07);
-    border-radius:30px;
+    gap:9px;
+    padding:10px 17px;
+    border:1px solid rgba(34,211,238,.25);
+    border-radius:50px;
+    background:rgba(34,211,238,.06);
     color:#67e8f9;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:25px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:24px;
 }
 
-.smallTitle span{
+.eyebrow span{
     width:8px;
     height:8px;
-    background:#22d3ee;
     border-radius:50%;
-    box-shadow:0 0 15px #22d3ee;
-    animation:dotPulse 1.5s infinite;
+    background:#22d3ee;
+    box-shadow:0 0 16px #22d3ee;
+    animation:dot 1.5s infinite;
 }
 
-@keyframes dotPulse{
+@keyframes dot{
     50%{
-        transform:scale(1.8);
+        transform:scale(1.7);
         opacity:.4;
     }
 }
 
 h1{
     font-size:clamp(48px,6vw,82px);
-    line-height:1.02;
+    line-height:.98;
     letter-spacing:-4px;
     margin-bottom:25px;
 }
 
-.gradientText{
+.white{
+    color:#fff;
+}
+
+.gradient{
+    display:inline-block;
     background:linear-gradient(
         90deg,
-        #ffffff,
-        #67e8f9,
-        #a78bfa,
+        #22d3ee,
+        #818cf8,
+        #c084fc,
         #f0abfc,
-        #ffffff
+        #22d3ee
     );
     background-size:300% auto;
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-    animation:gradientMove 5s linear infinite;
+    animation:gradient 5s linear infinite;
 }
 
-@keyframes gradientMove{
+@keyframes gradient{
     to{
         background-position:300% center;
     }
 }
 
-.subtitle{
-    font-size:18px;
-    line-height:1.8;
-    color:#aebbd0;
+.description{
     max-width:610px;
+    color:#94a3b8;
+    font-size:17px;
+    line-height:1.8;
     margin-bottom:32px;
 }
 
-/* ================= BUTTON ================= */
+/* button */
 
-.buttons{
+.actionRow{
     display:flex;
     align-items:center;
-    gap:18px;
+    gap:20px;
     flex-wrap:wrap;
 }
 
-.startBtn{
+.mainBtn{
     position:relative;
     display:inline-flex;
     align-items:center;
     gap:16px;
-    padding:17px 25px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
+    padding:17px 24px;
     border-radius:15px;
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:800;
     overflow:hidden;
-    background:linear-gradient(135deg,#06b6d4,#7c3aed);
+    background:linear-gradient(135deg,#06b6d4,#6366f1,#8b5cf6);
+    background-size:200% 200%;
     box-shadow:
-        0 10px 35px rgba(6,182,212,.25),
-        0 0 0 1px rgba(255,255,255,.1);
-    transition:.3s;
+        0 15px 40px rgba(79,70,229,.3),
+        inset 0 1px rgba(255,255,255,.3);
+    transition:.35s;
+    animation:buttonGradient 4s ease infinite;
 }
 
-.startBtn::before{
+@keyframes buttonGradient{
+    50%{
+        background-position:100% 50%;
+    }
+}
+
+.mainBtn::after{
     content:"";
     position:absolute;
-    top:0;
-    left:-120%;
-    width:80%;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-    );
-    transform:skewX(-20deg);
-    animation:shine 3s infinite;
+    width:60px;
+    height:160%;
+    top:-30%;
+    left:-100px;
+    background:rgba(255,255,255,.3);
+    transform:rotate(20deg);
+    animation:buttonShine 3.5s infinite;
 }
 
-@keyframes shine{
-    0%{left:-120%}
-    45%,100%{left:140%}
+@keyframes buttonShine{
+    0%{left:-100px}
+    45%,100%{left:130%}
 }
 
-.startBtn:hover{
-    transform:translateY(-5px) scale(1.03);
+.mainBtn:hover{
+    transform:translateY(-6px) scale(1.03);
     box-shadow:
-        0 20px 50px rgba(124,58,237,.45),
-        0 0 35px rgba(6,182,212,.2);
+        0 22px 55px rgba(99,102,241,.5),
+        0 0 35px rgba(34,211,238,.15);
 }
 
-.arrow{
-    font-size:23px;
+.mainBtn .arrow{
+    font-size:22px;
     transition:.3s;
 }
 
-.startBtn:hover .arrow{
+.mainBtn:hover .arrow{
     transform:translateX(7px);
 }
 
-.watch{
-    color:#cbd5e1;
-    font-size:14px;
+.note{
+    color:#64748b;
+    font-size:13px;
 }
 
-/* ================= FEATURES ================= */
+/* feature row */
 
-.features{
+.featureRow{
     display:flex;
-    gap:12px;
+    gap:10px;
     flex-wrap:wrap;
-    margin-top:35px;
+    margin-top:32px;
 }
 
 .feature{
-    padding:10px 15px;
-    border-radius:12px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.09);
-    color:#b9c5d8;
-    font-size:13px;
+    padding:9px 13px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.035);
+    border-radius:10px;
+    color:#a8b3c5;
+    font-size:12px;
     transition:.3s;
 }
 
 .feature:hover{
-    transform:translateY(-4px);
-    border-color:rgba(103,232,249,.4);
-    background:rgba(103,232,249,.08);
     color:#fff;
+    transform:translateY(-4px);
+    border-color:rgba(34,211,238,.3);
+    background:rgba(34,211,238,.06);
 }
 
-/* ================= RESUME PREVIEW ================= */
+/* stats */
 
-.heroRight{
-    flex:1;
-    min-height:570px;
+.stats{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    animation:heroRight 1.2s ease forwards;
+    gap:35px;
+    margin-top:38px;
 }
 
-@keyframes heroRight{
+.stat h3{
+    font-size:23px;
+    margin-bottom:4px;
+}
+
+.stat p{
+    color:#64748b;
+    font-size:11px;
+}
+
+/* ================= RIGHT ================= */
+
+.previewArea{
+    min-height:610px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation:previewIn 1.2s ease both;
+}
+
+@keyframes previewIn{
     from{
         opacity:0;
         transform:translateX(70px) scale(.9);
@@ -378,119 +462,111 @@ h1{
     }
 }
 
-.resumeGlow{
+.previewGlow{
     position:absolute;
-    width:470px;
-    height:470px;
+    width:510px;
+    height:510px;
     border-radius:50%;
     background:radial-gradient(
         circle,
         rgba(34,211,238,.22),
-        rgba(124,58,237,.12),
+        rgba(99,102,241,.12),
         transparent 70%
     );
-    animation:glowPulse 4s ease-in-out infinite;
+    animation:previewGlow 5s ease-in-out infinite;
 }
 
-@keyframes glowPulse{
+@keyframes previewGlow{
     50%{
         transform:scale(1.15);
-        opacity:.7;
+        opacity:.65;
     }
 }
 
-.resumeCard{
+/* resume */
+
+.resume{
+    width:380px;
+    height:520px;
     position:relative;
-    width:370px;
-    min-height:500px;
-    background:#fff;
-    color:#182033;
-    border-radius:12px;
+    z-index:3;
     padding:30px;
-    transform:rotate(4deg);
+    border-radius:9px;
+    color:#172033;
+    background:#fff;
     box-shadow:
-        0 35px 90px rgba(0,0,0,.55),
-        0 0 70px rgba(34,211,238,.12);
-    animation:cardFloat 5s ease-in-out infinite;
-    z-index:2;
+        0 45px 100px rgba(0,0,0,.6),
+        0 0 80px rgba(34,211,238,.13);
+    transform:rotate(4deg);
+    animation:resumeFloat 5s ease-in-out infinite;
 }
 
-@keyframes cardFloat{
+@keyframes resumeFloat{
     0%,100%{
         transform:rotate(4deg) translateY(0);
     }
+
     50%{
         transform:rotate(1deg) translateY(-18px);
     }
 }
 
-.paperTop{
+.resumeHeader{
     display:flex;
-    justify-content:space-between;
+    gap:15px;
     align-items:center;
+    padding-bottom:20px;
     border-bottom:2px solid #e5e7eb;
-    padding-bottom:18px;
-    margin-bottom:20px;
 }
 
-.avatar{
-    width:65px;
-    height:65px;
+.profile{
+    width:64px;
+    height:64px;
     border-radius:50%;
-    background:linear-gradient(135deg,#06b6d4,#7c3aed);
     display:flex;
     align-items:center;
     justify-content:center;
     color:white;
-    font-size:25px;
-    font-weight:bold;
+    font-size:21px;
+    font-weight:800;
+    background:linear-gradient(135deg,#06b6d4,#6366f1);
 }
 
-.paperName{
-    flex:1;
-    padding-left:15px;
-}
-
-.paperName h3{
-    font-size:20px;
+.resumeHeader h2{
+    font-size:21px;
     margin-bottom:5px;
 }
 
-.paperName p{
+.resumeHeader p{
     font-size:11px;
     color:#64748b;
 }
 
-.paperLine{
-    height:9px;
-    border-radius:5px;
+.resumeSection{
+    margin-top:20px;
+}
+
+.resumeSection h4{
+    font-size:10px;
+    color:#6366f1;
+    letter-spacing:1px;
+    margin-bottom:9px;
+}
+
+.line{
+    height:8px;
     background:#e5e7eb;
-    margin:12px 0;
+    border-radius:5px;
+    margin:8px 0;
 }
 
-.short{
-    width:55%;
-}
+.line.big{width:95%}
+.line.mid{width:75%}
+.line.small{width:50%}
 
-.medium{
-    width:75%;
-}
-
-.long{
-    width:95%;
-}
-
-.sectionTitle{
-    font-size:11px;
-    font-weight:bold;
-    color:#7c3aed;
-    margin-top:22px;
-    margin-bottom:8px;
-}
-
-.paperSkills{
+.skills{
     display:flex;
-    gap:7px;
+    gap:6px;
     flex-wrap:wrap;
 }
 
@@ -502,171 +578,219 @@ h1{
     font-size:8px;
 }
 
-/* ================= FLOATING BADGES ================= */
+/* ================= FLOAT CARDS ================= */
 
-.floatBadge{
+.floatCard{
     position:absolute;
-    z-index:5;
-    padding:13px 17px;
-    border-radius:14px;
-    background:rgba(15,23,42,.78);
-    border:1px solid rgba(255,255,255,.14);
-    backdrop-filter:blur(15px);
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    z-index:6;
     display:flex;
     align-items:center;
     gap:10px;
-    animation:badgeFloat 4s ease-in-out infinite;
+    padding:13px 16px;
+    border-radius:14px;
+    background:rgba(10,16,35,.8);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+    animation:floatCard 4s ease-in-out infinite;
 }
 
-.floatBadge strong{
+.floatCard strong{
     display:block;
-    font-size:13px;
+    font-size:12px;
 }
 
-.floatBadge small{
-    color:#94a3b8;
-    font-size:10px;
+.floatCard small{
+    display:block;
+    color:#64748b;
+    font-size:9px;
+    margin-top:3px;
 }
 
-.badge1{
-    top:50px;
-    right:20px;
-}
-
-.badge2{
-    bottom:70px;
-    left:10px;
-    animation-delay:1s;
-}
-
-.badge3{
-    top:220px;
-    left:-15px;
-    animation-delay:2s;
-}
-
-.badgeIcon{
-    width:34px;
-    height:34px;
+.cardIcon{
+    width:36px;
+    height:36px;
     border-radius:10px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:rgba(34,211,238,.12);
+    background:rgba(34,211,238,.1);
 }
 
-@keyframes badgeFloat{
+.card1{
+    right:0;
+    top:70px;
+}
+
+.card2{
+    left:-10px;
+    bottom:85px;
+    animation-delay:1s;
+}
+
+.card3{
+    left:5px;
+    top:170px;
+    animation-delay:2s;
+}
+
+@keyframes floatCard{
     0%,100%{
         transform:translateY(0);
     }
+
     50%{
-        transform:translateY(-12px);
+        transform:translateY(-14px);
     }
 }
 
-/* ================= BOTTOM ================= */
+/* orbit */
 
-.bottomText{
+.orbit{
+    position:absolute;
+    width:570px;
+    height:570px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:50%;
+    animation:orbit 18s linear infinite;
+}
+
+.orbit::before{
+    content:"✦";
+    position:absolute;
+    top:-8px;
+    left:50%;
+    color:#67e8f9;
+    text-shadow:0 0 20px #22d3ee;
+}
+
+@keyframes orbit{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= FOOTER ================= */
+
+footer{
     text-align:center;
-    padding:0 20px 40px;
-    color:#64748b;
-    font-size:12px;
+    padding:15px 20px 30px;
+    color:#475569;
+    font-size:11px;
 }
 
 /* ================= RESPONSIVE ================= */
 
-@media(max-width:950px){
+@media(max-width:1000px){
 
     .hero{
-        flex-direction:column;
+        grid-template-columns:1fr;
         text-align:center;
-        padding-top:50px;
+        padding-top:55px;
     }
 
-    .heroLeft{
-        max-width:800px;
+    .description{
+        margin-left:auto;
+        margin-right:auto;
     }
 
-    .buttons,
-    .features{
+    .actionRow,
+    .featureRow,
+    .stats{
         justify-content:center;
     }
 
-    .heroRight{
-        width:100%;
-        min-height:550px;
+    .previewArea{
+        min-height:580px;
     }
 
-    h1{
-        letter-spacing:-2px;
-    }
 }
 
 @media(max-width:600px){
 
     .navbar{
-        padding:18px 5%;
+        padding:0 5%;
     }
 
-    .navBadge{
+    .navRight .status{
         display:none;
     }
 
     .logo{
-        font-size:18px;
-    }
-
-    .logoIcon{
-        width:38px;
-        height:38px;
+        font-size:17px;
     }
 
     .hero{
-        padding:35px 5% 60px;
-        gap:20px;
+        padding:45px 5% 50px;
     }
 
     h1{
         font-size:46px;
+        letter-spacing:-2px;
     }
 
-    .subtitle{
-        font-size:15px;
+    .description{
+        font-size:14px;
     }
 
-    .resumeCard{
-        width:290px;
-        min-height:410px;
-        padding:22px;
+    .stats{
+        gap:20px;
     }
 
-    .heroRight{
+    .previewArea{
         min-height:470px;
     }
 
-    .resumeGlow{
+    .resume{
+        width:290px;
+        height:410px;
+        padding:22px;
+    }
+
+    .profile{
+        width:50px;
+        height:50px;
+    }
+
+    .resumeHeader h2{
+        font-size:17px;
+    }
+
+    .orbit{
         width:350px;
         height:350px;
     }
 
-    .badge1{
+    .previewGlow{
+        width:350px;
+        height:350px;
+    }
+
+    .card1{
         right:-5px;
-        top:30px;
+        top:20px;
     }
 
-    .badge2{
+    .card2{
         left:-5px;
-        bottom:40px;
+        bottom:35px;
     }
 
-    .badge3{
+    .card3{
         left:-5px;
-        top:180px;
+        top:140px;
     }
 
-    .floatBadge{
-        padding:9px 12px;
+    .floatCard{
+        padding:9px 11px;
+    }
+
+    .floatCard strong{
+        font-size:10px;
+    }
+
+    .floatCard small{
+        font-size:8px;
     }
 }
 </style>
@@ -674,21 +798,21 @@ h1{
 
 <body>
 
-<!-- BACKGROUND -->
+<div class="grid"></div>
 
-<div class="background">
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
 
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
-    <div class="particle p5"></div>
-    <div class="particle p6"></div>
-
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
 
@@ -698,7 +822,7 @@ h1{
 
     <div class="logo">
 
-        <div class="logoIcon">
+        <div class="logoBox">
             📄
         </div>
 
@@ -706,8 +830,13 @@ h1{
 
     </div>
 
-    <div class="navBadge">
-        ✦ Build Your Future
+    <div class="navRight">
+
+        <div class="status">
+            <i></i>
+            Ready to Build
+        </div>
+
     </div>
 
 </nav>
@@ -715,13 +844,14 @@ h1{
 
 <!-- HERO -->
 
-<main class="hero">
+<section class="hero">
 
-    <!-- LEFT -->
 
-    <section class="heroLeft">
+    <!-- LEFT CONTENT -->
 
-        <div class="smallTitle">
+    <div class="heroContent">
+
+        <div class="eyebrow">
             <span></span>
             SMART RESUME BUILDER
         </div>
@@ -729,29 +859,32 @@ h1{
 
         <h1>
 
-            Build a Resume
+            <span class="white">
+                Build Your
+            </span>
+
             <br>
 
-            <span class="gradientText">
-                That Gets Noticed.
+            <span class="gradient">
+                Perfect Resume.
             </span>
 
         </h1>
 
 
-        <p class="subtitle">
+        <p class="description">
 
-            Create a professional, modern and job-ready
-            resume in just a few minutes. Showcase your
-            skills, education, projects and achievements
-            with confidence.
+            Create a modern, professional and job-ready
+            resume in minutes. Highlight your education,
+            skills, projects and achievements with a
+            beautiful design that gets attention.
 
         </p>
 
 
-        <div class="buttons">
+        <div class="actionRow">
 
-            <a href="resume.html" class="startBtn">
+            <a href="resume.html" class="mainBtn">
 
                 Create My Resume
 
@@ -761,183 +894,201 @@ h1{
 
             </a>
 
-            <span class="watch">
-                ⚡ Fast & Easy
+            <span class="note">
+                ⚡ Simple · Fast · Free
             </span>
 
         </div>
 
 
-        <div class="features">
+        <div class="featureRow">
 
             <div class="feature">
                 ✨ Modern Design
             </div>
 
             <div class="feature">
-                🎨 Easy Customization
+                🎨 Easy Editing
             </div>
 
             <div class="feature">
-                📄 Print & PDF Ready
+                📄 A4 Ready
+            </div>
+
+            <div class="feature">
+                🖨️ Print Ready
             </div>
 
         </div>
 
-    </section>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>1-Click</h3>
+                <p>Resume Creation</p>
+            </div>
+
+            <div class="stat">
+                <h3>A4</h3>
+                <p>Professional Format</p>
+            </div>
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Customizable</p>
+            </div>
+
+        </div>
+
+    </div>
 
 
-    <!-- RIGHT -->
+    <!-- RIGHT PREVIEW -->
 
-    <section class="heroRight">
+    <div class="previewArea">
 
-        <div class="resumeGlow"></div>
+        <div class="previewGlow"></div>
+
+        <div class="orbit"></div>
 
 
         <!-- RESUME -->
 
-        <div class="resumeCard">
+        <div class="resume">
 
-            <div class="paperTop">
+            <div class="resumeHeader">
 
-                <div class="avatar">
-                    CK
+                <div class="profile">
+                    CV
                 </div>
 
-                <div class="paperName">
-
-                    <h3>
-                        Your Name
-                    </h3>
-
-                    <p>
-                        Software Developer
-                    </p>
-
+                <div>
+                    <h2>Your Name</h2>
+                    <p>Software Developer</p>
                 </div>
 
             </div>
 
 
-            <div class="sectionTitle">
-                PROFILE
-            </div>
+            <div class="resumeSection">
 
-            <div class="paperLine long"></div>
-            <div class="paperLine medium"></div>
-            <div class="paperLine short"></div>
+                <h4>PROFILE</h4>
 
-
-            <div class="sectionTitle">
-                EDUCATION
-            </div>
-
-            <div class="paperLine long"></div>
-            <div class="paperLine medium"></div>
-
-
-            <div class="sectionTitle">
-                SKILLS
-            </div>
-
-            <div class="paperSkills">
-
-                <span class="skill">Java</span>
-                <span class="skill">Python</span>
-                <span class="skill">HTML</span>
-                <span class="skill">CSS</span>
-                <span class="skill">SQL</span>
+                <div class="line big"></div>
+                <div class="line mid"></div>
+                <div class="line small"></div>
 
             </div>
 
 
-            <div class="sectionTitle">
-                PROJECTS
+            <div class="resumeSection">
+
+                <h4>EDUCATION</h4>
+
+                <div class="line big"></div>
+                <div class="line mid"></div>
+
             </div>
 
-            <div class="paperLine long"></div>
-            <div class="paperLine medium"></div>
-            <div class="paperLine short"></div>
 
+            <div class="resumeSection">
 
-            <div class="sectionTitle">
-                EXPERIENCE
+                <h4>SKILLS</h4>
+
+                <div class="skills">
+
+                    <span class="skill">Java</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">HTML</span>
+                    <span class="skill">CSS</span>
+                    <span class="skill">SQL</span>
+
+                </div>
+
             </div>
 
-            <div class="paperLine long"></div>
-            <div class="paperLine medium"></div>
+
+            <div class="resumeSection">
+
+                <h4>PROJECTS</h4>
+
+                <div class="line big"></div>
+                <div class="line mid"></div>
+                <div class="line small"></div>
+
+            </div>
+
+
+            <div class="resumeSection">
+
+                <h4>EXPERIENCE</h4>
+
+                <div class="line big"></div>
+                <div class="line mid"></div>
+
+            </div>
 
         </div>
 
 
-        <!-- FLOATING BADGES -->
+        <!-- FLOATING CARD 1 -->
 
-        <div class="floatBadge badge1">
+        <div class="floatCard card1">
 
-            <div class="badgeIcon">
+            <div class="cardIcon">
                 ✨
             </div>
 
             <div>
-                <strong>
-                    Resume Ready
-                </strong>
-
-                <small>
-                    Professional design
-                </small>
+                <strong>Professional</strong>
+                <small>Modern template</small>
             </div>
 
         </div>
 
 
-        <div class="floatBadge badge2">
+        <!-- FLOATING CARD 2 -->
 
-            <div class="badgeIcon">
+        <div class="floatCard card2">
+
+            <div class="cardIcon">
                 🚀
             </div>
 
             <div>
-                <strong>
-                    Job Ready
-                </strong>
-
-                <small>
-                    Showcase your skills
-                </small>
+                <strong>Job Ready</strong>
+                <small>Show your skills</small>
             </div>
 
         </div>
 
 
-        <div class="floatBadge badge3">
+        <!-- FLOATING CARD 3 -->
 
-            <div class="badgeIcon">
+        <div class="floatCard card3">
+
+            <div class="cardIcon">
                 ✓
             </div>
 
             <div>
-                <strong>
-                    98% Professional
-                </strong>
-
-                <small>
-                    Clean & modern
-                </small>
+                <strong>Easy to Create</strong>
+                <small>Build in minutes</small>
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-</main>
+</section>
 
 
-<div class="bottomText">
+<footer>
 
-    © 2026 Resume Builder Pro · Create your future with confidence.
+    © 2026 Resume Builder Pro · Build your future, one resume at a time.
 
-</div>
+</footer>
 
 
 </body>
