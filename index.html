@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Resume Builder Pro</title>
 
+
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 * {
     margin: 0;
@@ -14,6 +22,7 @@
     box-sizing: border-box;
     font-family: "Poppins", Arial, sans-serif;
 }
+
 
 body {
     background: #fffaf5;
@@ -27,80 +36,133 @@ body {
 ========================= */
 
 .navbar {
+
     width: 100%;
-    min-height: 80px;
+
+    min-height: 90px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 10px 7%;
 
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.95);
+
     backdrop-filter: blur(10px);
 
     position: fixed;
+
     top: 0;
+
+    left: 0;
+
     z-index: 1000;
 
     box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 
 
-/* LOGO + NOTE */
+/* =========================
+   LOGO SECTION
+========================= */
 
 .brand-section {
+
     display: flex;
+
     flex-direction: column;
+
     align-items: flex-start;
+
+    justify-content: center;
 }
+
 
 .logo {
+
     font-size: 26px;
+
     font-weight: 800;
+
     color: #222;
+
+    line-height: 1.2;
 }
 
+
 .logo span {
+
     color: #f28c28;
 }
 
 
-/* NOTE */
+/* =========================
+   NOTE
+========================= */
 
 .resume-note {
+
+    display: block;
+
+    margin-top: 5px;
+
     font-size: 11px;
+
+    font-weight: 600;
+
     color: #777;
-    margin-top: 3px;
-    font-weight: 500;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
 }
 
 
-/* NAV LINKS */
+/* =========================
+   NAV LINKS
+========================= */
 
 .nav-links {
+
     display: flex;
+
     align-items: center;
+
     gap: 35px;
+
     list-style: none;
 }
 
+
 .nav-links a {
+
     text-decoration: none;
+
     color: #333;
+
     font-weight: 500;
+
     transition: 0.3s;
 }
 
+
 .nav-links a:hover {
+
     color: #f28c28;
 }
 
 
-/* CREATE RESUME BUTTON */
+/* =========================
+   CREATE RESUME BUTTON
+========================= */
 
 .create-btn {
+
     background: #f28c28;
+
     color: white !important;
 
     padding: 12px 25px;
@@ -114,7 +176,9 @@ body {
     transition: 0.3s !important;
 }
 
+
 .create-btn:hover {
+
     background: #e67d18;
 
     color: white !important;
@@ -130,9 +194,10 @@ body {
 ========================= */
 
 .hero {
+
     min-height: 100vh;
 
-    padding: 120px 7% 60px;
+    padding: 140px 7% 60px;
 
     display: flex;
 
@@ -146,22 +211,30 @@ body {
 }
 
 
-/* BACKGROUND SHAPES */
+/* =========================
+   BACKGROUND SHAPES
+========================= */
 
 .shape {
+
     position: absolute;
+
     border-radius: 50%;
+
     z-index: -1;
 }
 
 
 .shape1 {
+
     width: 300px;
+
     height: 300px;
 
     background: #ffe1bd;
 
     top: 100px;
+
     left: -100px;
 
     animation: float 6s ease-in-out infinite;
@@ -169,12 +242,15 @@ body {
 
 
 .shape2 {
+
     width: 220px;
+
     height: 220px;
 
     background: #ffd09a;
 
     right: -70px;
+
     bottom: 50px;
 
     animation: float 5s ease-in-out infinite reverse;
@@ -182,12 +258,15 @@ body {
 
 
 .shape3 {
+
     width: 100px;
+
     height: 100px;
 
     border: 15px solid #f28c28;
 
     right: 45%;
+
     top: 15%;
 
     opacity: .2;
@@ -197,10 +276,11 @@ body {
 
 
 /* =========================
-   LEFT CONTENT
+   HERO CONTENT
 ========================= */
 
 .hero-content {
+
     width: 50%;
 
     animation: slideLeft 1s ease forwards;
@@ -208,6 +288,7 @@ body {
 
 
 .small-title {
+
     color: #f28c28;
 
     font-size: 16px;
@@ -221,6 +302,7 @@ body {
 
 
 .hero h1 {
+
     font-size: clamp(45px, 6vw, 78px);
 
     line-height: 1.05;
@@ -232,11 +314,13 @@ body {
 
 
 .hero h1 span {
+
     color: #f28c28;
 }
 
 
 .hero p {
+
     font-size: 18px;
 
     line-height: 1.7;
@@ -248,10 +332,11 @@ body {
 
 
 /* =========================
-   IMAGE
+   HERO IMAGE
 ========================= */
 
 .hero-image {
+
     width: 47%;
 
     display: flex;
@@ -267,7 +352,9 @@ body {
 
 
 .image-circle {
+
     width: min(480px, 90%);
+
     height: min(480px, 90%);
 
     border-radius: 50%;
@@ -287,11 +374,13 @@ body {
 
 
 .image-circle::before {
+
     content: "";
 
     position: absolute;
 
     width: 105%;
+
     height: 105%;
 
     border: 2px dashed #f28c28;
@@ -303,7 +392,9 @@ body {
 
 
 .hero-image img {
+
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -321,9 +412,11 @@ body {
 ========================= */
 
 .badge {
+
     position: absolute;
 
     right: 0;
+
     bottom: 50px;
 
     background: white;
@@ -341,6 +434,7 @@ body {
 
 
 .badge strong {
+
     display: block;
 
     font-size: 20px;
@@ -350,6 +444,7 @@ body {
 
 
 .badge small {
+
     color: #777;
 }
 
@@ -359,6 +454,7 @@ body {
 ========================= */
 
 .features {
+
     padding: 80px 7%;
 
     background: white;
@@ -368,6 +464,7 @@ body {
 
 
 .features h2 {
+
     font-size: 40px;
 
     margin-bottom: 10px;
@@ -375,6 +472,7 @@ body {
 
 
 .features > p {
+
     color: #777;
 
     margin-bottom: 45px;
@@ -382,6 +480,7 @@ body {
 
 
 .feature-grid {
+
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
@@ -391,6 +490,7 @@ body {
 
 
 .card {
+
     padding: 35px 25px;
 
     border-radius: 18px;
@@ -404,6 +504,7 @@ body {
 
 
 .card:hover {
+
     transform: translateY(-10px);
 
     box-shadow: 0 15px 35px rgba(0,0,0,.08);
@@ -411,6 +512,7 @@ body {
 
 
 .icon {
+
     font-size: 45px;
 
     margin-bottom: 18px;
@@ -418,11 +520,13 @@ body {
 
 
 .card h3 {
+
     margin-bottom: 10px;
 }
 
 
 .card p {
+
     color: #777;
 
     line-height: 1.6;
@@ -434,6 +538,7 @@ body {
 ========================= */
 
 footer {
+
     background: #222;
 
     color: white;
@@ -445,6 +550,7 @@ footer {
 
 
 footer span {
+
     color: #f28c28;
 }
 
@@ -456,15 +562,19 @@ footer span {
 @keyframes slideLeft {
 
     from {
+
         opacity: 0;
 
         transform: translateX(-70px);
+
     }
 
     to {
+
         opacity: 1;
 
         transform: translateX(0);
+
     }
 
 }
@@ -473,15 +583,19 @@ footer span {
 @keyframes slideRight {
 
     from {
+
         opacity: 0;
 
         transform: translateX(70px);
+
     }
 
     to {
+
         opacity: 1;
 
         transform: translateX(0);
+
     }
 
 }
@@ -490,11 +604,15 @@ footer span {
 @keyframes imageFloat {
 
     0%,100% {
+
         transform: translateY(0);
+
     }
 
     50% {
+
         transform: translateY(-15px);
+
     }
 
 }
@@ -503,11 +621,15 @@ footer span {
 @keyframes badgeFloat {
 
     0%,100% {
+
         transform: translateY(0);
+
     }
 
     50% {
+
         transform: translateY(-10px);
+
     }
 
 }
@@ -516,11 +638,15 @@ footer span {
 @keyframes float {
 
     0%,100% {
+
         transform: translateY(0);
+
     }
 
     50% {
+
         transform: translateY(-25px);
+
     }
 
 }
@@ -529,11 +655,15 @@ footer span {
 @keyframes rotate {
 
     from {
+
         transform: rotate(0deg);
+
     }
 
     to {
+
         transform: rotate(360deg);
+
     }
 
 }
@@ -546,66 +676,88 @@ footer span {
 @media(max-width: 900px) {
 
     .navbar {
+
+        min-height: 90px;
+
         padding: 10px 5%;
+
     }
 
 
     .nav-links {
+
         display: none;
+
     }
 
 
     .logo {
+
         font-size: 24px;
+
     }
 
 
     .resume-note {
+
         font-size: 10px;
 
-        max-width: 260px;
+        white-space: normal;
 
-        line-height: 1.3;
+        max-width: 280px;
+
     }
 
 
     .hero {
+
         flex-direction: column;
 
         text-align: center;
 
-        padding-top: 125px;
+        padding-top: 140px;
+
     }
 
 
     .hero-content {
+
         width: 100%;
+
     }
 
 
     .hero p {
+
         margin-left: auto;
 
         margin-right: auto;
+
     }
 
 
     .hero-image {
+
         width: 100%;
 
         margin-top: 60px;
+
     }
 
 
     .image-circle {
+
         width: 350px;
 
         height: 350px;
+
     }
 
 
     .feature-grid {
+
         grid-template-columns: 1fr;
+
     }
 
 }
@@ -618,40 +770,51 @@ footer span {
 @media(max-width: 500px) {
 
     .hero h1 {
+
         font-size: 43px;
+
     }
 
 
     .hero p {
+
         font-size: 16px;
+
     }
 
 
     .image-circle {
+
         width: 280px;
 
         height: 280px;
+
     }
 
 
     .badge {
+
         right: 5px;
 
         bottom: 20px;
 
         padding: 12px;
+
     }
 
 
     .resume-note {
+
         font-size: 9px;
 
-        max-width: 230px;
+        max-width: 240px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -670,43 +833,63 @@ footer span {
     <div class="brand-section">
 
         <div class="logo">
+
             Resume<span>Builder</span>
+
         </div>
 
+
         <div class="resume-note">
+
             📱 Note: To create a resume on your phone, turn on Desktop Site.
+
         </div>
 
     </div>
+
 
 
     <!-- NAVIGATION -->
 
     <ul class="nav-links">
 
+
         <li>
+
             <a href="index.html">
+
                 Home
+
             </a>
+
         </li>
 
 
         <li>
+
             <a href="#features">
+
                 Features
+
             </a>
+
         </li>
 
 
         <li>
-            <a href="resume.html"
-               class="create-btn"
-               onclick="checkDesktop(event)">
+
+            <a
+                href="resume.html"
+                class="create-btn"
+                onclick="checkDesktop(event)"
+            >
 
                 Create Resume
 
             </a>
+
         </li>
+
 
     </ul>
 
@@ -721,7 +904,7 @@ footer span {
 <section class="hero">
 
 
-    <!-- BACKGROUND SHAPES -->
+    <!-- SHAPES -->
 
     <div class="shape shape1"></div>
 
@@ -737,7 +920,9 @@ footer span {
 
 
         <div class="small-title">
+
             ✦ PROFESSIONAL RESUME BUILDER
+
         </div>
 
 
@@ -748,7 +933,9 @@ footer span {
             <br>
 
             <span>
+
                 Perfect Resume.
+
             </span>
 
         </h1>
@@ -789,12 +976,16 @@ footer span {
 
 
             <strong>
+
                 100%
+
             </strong>
 
 
             <small>
+
                 Professional Resume
+
             </small>
 
 
@@ -819,12 +1010,16 @@ footer span {
 
 
     <h2>
+
         Everything You Need
+
     </h2>
 
 
     <p>
+
         Build a resume that represents your skills and career.
+
     </p>
 
 
@@ -839,12 +1034,16 @@ footer span {
 
 
             <div class="icon">
+
                 📄
+
             </div>
 
 
             <h3>
+
                 Professional Templates
+
             </h3>
 
 
@@ -866,12 +1065,16 @@ footer span {
 
 
             <div class="icon">
+
                 ⚡
+
             </div>
 
 
             <h3>
+
                 Easy to Create
+
             </h3>
 
 
@@ -893,12 +1096,16 @@ footer span {
 
 
             <div class="icon">
+
                 💼
+
             </div>
 
 
             <h3>
+
                 Career Ready
+
             </h3>
 
 
@@ -928,7 +1135,9 @@ footer span {
     © 2026
 
     <span>
+
         ResumeBuilder
+
     </span>.
 
     All Rights Reserved.
@@ -943,11 +1152,6 @@ footer span {
 
 <script>
 
-/*
-   CREATE RESUME
-   MOBILE CHECK
-*/
-
 function checkDesktop(event) {
 
     if (window.innerWidth <= 900) {
@@ -955,7 +1159,7 @@ function checkDesktop(event) {
         event.preventDefault();
 
         alert(
-            "💻 Please turn on Desktop Site to create your resume.\n\n" +
+            "📱 Note: To create a resume on your phone, turn on Desktop Site.\n\n" +
             "Open your browser menu and select 'Desktop site'."
         );
 
@@ -967,4 +1171,5 @@ function checkDesktop(event) {
 
 
 </body>
+
 </html>
