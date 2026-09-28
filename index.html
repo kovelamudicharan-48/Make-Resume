@@ -48,6 +48,7 @@ body {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 35px;
     list-style: none;
 }
@@ -62,6 +63,25 @@ body {
 .nav-links a:hover {
     color: #f28c28;
 }
+
+/* CREATE RESUME BUTTON - CENTER */
+.create-btn {
+    background: #f28c28;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 18px rgba(242,140,40,0.25);
+    transition: 0.3s !important;
+}
+
+.create-btn:hover {
+    background: #e67d18;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(242,140,40,0.35);
+}
+
 
 /* HERO */
 .hero {
@@ -412,9 +432,13 @@ footer span {
             <a href="#features">Features</a>
         </li>
 
-        <!-- ONLY CREATE RESUME -->
+        <!-- CREATE RESUME -->
         <li>
-            <a href="resume.html">Create Resume</a>
+            <a href="resume.html"
+               class="create-btn"
+               onclick="checkDesktop(event)">
+               Create Resume
+            </a>
         </li>
 
     </ul>
@@ -562,6 +586,27 @@ footer span {
 
 </footer>
 
+
+<script>
+
+/* DESKTOP SITE CHECK */
+
+function checkDesktop(event) {
+
+    if (window.innerWidth <= 900) {
+
+        event.preventDefault();
+
+        alert(
+            "💻 Please open this website in Desktop Site mode to create your resume.\n\n" +
+            "On your phone browser, select 'Desktop site' from the browser menu."
+        );
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
