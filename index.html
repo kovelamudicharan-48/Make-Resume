@@ -6,397 +6,448 @@
 
   <title>Resume Builder Pro</title>
 
-  <link rel="stylesheet" href="home.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      color: #222;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      border-bottom: 1px solid #eee;
+      background: white;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #635bff;
+    }
+
+    .logo span {
+      color: #222;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #635bff;
+    }
+
+    .nav-button {
+      background: #635bff;
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+
+    /* HERO */
+
+    .hero {
+      margin: 25px 4%;
+      min-height: 430px;
+      border-radius: 10px;
+
+      background: linear-gradient(
+        120deg,
+        #d9efff,
+        #a9d9ff
+      );
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 50px 8%;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      width: 55%;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      margin-bottom: 18px;
+      color: #111;
+    }
+
+    .hero h1 span {
+      color: #635bff;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .create-btn {
+      background: #635bff;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .create-btn:hover {
+      background: #5048d8;
+    }
+
+
+    /* RESUME PREVIEW */
+
+    .resume-card {
+      width: 270px;
+      height: 350px;
+      background: white;
+      padding: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transform: rotate(4deg);
+    }
+
+    .resume-card h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .resume-card h4 {
+      color: #635bff;
+      font-size: 11px;
+      margin-bottom: 15px;
+    }
+
+    .line {
+      height: 5px;
+      background: #e5e5e5;
+      margin: 8px 0;
+      border-radius: 5px;
+    }
+
+    .short {
+      width: 60%;
+    }
+
+    .resume-title {
+      font-size: 11px;
+      font-weight: bold;
+      color: #635bff;
+      margin-top: 18px;
+    }
+
+
+    /* FEATURES */
+
+    .features {
+      padding: 55px 7%;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 30px;
+      margin-bottom: 35px;
+    }
+
+    .feature-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .feature {
+      width: 30%;
+      padding: 25px;
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+
+    /* BOTTOM BUTTON */
+
+    .bottom {
+      text-align: center;
+      padding: 30px;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 35px;
+      }
+
+      .resume-card {
+        margin-top: 40px;
+      }
+
+      .feature-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .feature {
+        width: 90%;
+      }
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
 
-  <div class="logo">
-    <span>Resume</span>Builder
-  </div>
+  <!-- NAVBAR -->
 
-  <nav>
-    <a href="#" class="active">Home</a>
-    <a href="#templates">Templates</a>
-    <a href="#features">Features</a>
-    <a href="#about">About</a>
-  </nav>
+  <div class="navbar">
 
-  <div class="nav-right">
-
-    <div class="search">
-      🔍
-      <input
-        type="text"
-        placeholder="Search resume templates">
+    <div class="logo">
+      Resume<span>Builder</span>
     </div>
 
-    <button class="login">Log in</button>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#">Templates</a>
+      <a href="#">About</a>
+    </div>
 
     <button
-      class="signup"
-      onclick="startResume()">
-      Get Started
+      class="nav-button"
+      onclick="openResume()">
+      Create Resume
     </button>
 
   </div>
 
-</header>
 
+  <!-- HERO -->
 
-<!-- HERO -->
-<section class="hero">
+  <section class="hero">
 
-  <div class="hero-content">
+    <div class="hero-content">
 
-    <div class="badge">
-      ✨ PROFESSIONAL RESUME BUILDER
-    </div>
+      <h1>
+        Create a Resume<br>
+        <span>That Gets Noticed.</span>
+      </h1>
 
-    <h1>
-      Create a Resume<br>
-      <span>That Gets Noticed.</span>
-    </h1>
-
-    <p>
-      Build a professional resume in minutes.
-      Choose your style, add your details,
-      and create a resume that represents you.
-    </p>
-
-    <div class="hero-buttons">
+      <p>
+        Build a professional and modern resume
+        in just a few minutes. Add your skills,
+        education, projects and experience easily.
+      </p>
 
       <button
-        class="primary-btn"
-        onclick="startResume()">
-        Create My Resume →
-      </button>
-
-      <button
-        class="secondary-btn"
-        onclick="scrollToFeatures()">
-        Explore Features
+        class="create-btn"
+        onclick="openResume()">
+        Create a Resume →
       </button>
 
     </div>
 
-    <div class="trust">
 
-      <span>✓ Easy to use</span>
-      <span>✓ Professional design</span>
-      <span>✓ Print ready</span>
+    <!-- RESUME PREVIEW -->
 
-    </div>
+    <div class="resume-card">
 
-  </div>
+      <h2>Your Name</h2>
 
-
-  <!-- RESUME PREVIEW -->
-
-  <div class="resume-preview">
-
-    <div class="paper">
-
-      <div class="paper-top">
-
-        <div>
-
-          <div class="fake-name">
-            YOUR NAME
-          </div>
-
-          <div class="fake-role">
-            SOFTWARE DEVELOPER
-          </div>
-
-        </div>
-
-        <div class="fake-photo"></div>
-
-      </div>
+      <h4>SOFTWARE DEVELOPER</h4>
 
       <div class="line"></div>
 
-      <div class="preview-section">
-
-        <div class="preview-title">
-          PROFILE
-        </div>
-
-        <div class="small-line"></div>
-        <div class="small-line"></div>
-        <div class="small-line short"></div>
-
+      <div class="resume-title">
+        PROFILE
       </div>
 
-      <div class="preview-section">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line short"></div>
 
-        <div class="preview-title">
-          EDUCATION
-        </div>
 
-        <div class="small-line"></div>
-        <div class="small-line"></div>
-
+      <div class="resume-title">
+        EDUCATION
       </div>
 
-      <div class="preview-section">
+      <div class="line"></div>
+      <div class="line"></div>
 
-        <div class="preview-title">
-          SKILLS
-        </div>
 
-        <div class="skills-preview">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
+      <div class="resume-title">
+        SKILLS
       </div>
 
-      <div class="preview-section">
+      <div class="line"></div>
+      <div class="line short"></div>
 
-        <div class="preview-title">
-          PROJECTS
-        </div>
 
-        <div class="small-line"></div>
-        <div class="small-line"></div>
-        <div class="small-line short"></div>
-
+      <div class="resume-title">
+        PROJECTS
       </div>
+
+      <div class="line"></div>
+      <div class="line"></div>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- FEATURES -->
-<section
-  class="features"
-  id="features">
+  <!-- FEATURES -->
 
-  <div class="section-heading">
-
-    <span>WHY CHOOSE US</span>
+  <section
+    class="features"
+    id="features">
 
     <h2>
-      Everything You Need to Build Your Resume
+      Everything You Need
     </h2>
 
-    <p>
-      Simple tools designed to help you create
-      a professional resume without the complexity.
-    </p>
 
-  </div>
+    <div class="feature-container">
 
 
-  <div class="feature-grid">
+      <div class="feature">
 
-    <div class="feature-card">
+        <div class="icon">
+          🎨
+        </div>
 
-      <div class="feature-icon">
-        🎨
+        <h3>
+          Professional Design
+        </h3>
+
+        <p>
+          Create a clean and modern resume
+          with a professional layout.
+        </p>
+
       </div>
 
-      <h3>
-        Professional Templates
-      </h3>
 
-      <p>
-        Create clean and professional resumes
-        with a modern design.
-      </p>
+      <div class="feature">
+
+        <div class="icon">
+          ⚡
+        </div>
+
+        <h3>
+          Easy to Use
+        </h3>
+
+        <p>
+          Enter your information and
+          generate your resume quickly.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📄
+        </div>
+
+        <h3>
+          Print Ready
+        </h3>
+
+        <p>
+          Generate a resume that is ready
+          to print or save as PDF.
+        </p>
+
+      </div>
+
 
     </div>
 
-
-    <div class="feature-card">
-
-      <div class="feature-icon">
-        ⚡
-      </div>
-
-      <h3>
-        Easy to Build
-      </h3>
-
-      <p>
-        Enter your information and generate
-        your resume in just a few minutes.
-      </p>
-
-    </div>
+  </section>
 
 
-    <div class="feature-card">
+  <!-- BOTTOM -->
 
-      <div class="feature-icon">
-        📄
-      </div>
-
-      <h3>
-        Print Ready
-      </h3>
-
-      <p>
-        Generate a professional resume that
-        is ready to print or save as PDF.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TEMPLATES -->
-<section
-  class="templates"
-  id="templates">
-
-  <div class="section-heading">
-
-    <span>GET STARTED</span>
-
-    <h2>
-      Choose Your Resume Type
-    </h2>
-
-    <p>
-      Start building your resume based on
-      your career experience.
-    </p>
-
-  </div>
-
-
-  <div class="type-grid">
-
-    <div
-      class="type-card"
-      onclick="startResume()">
-
-      <div class="type-icon">
-        🎓
-      </div>
-
-      <h3>
-        Fresher
-      </h3>
-
-      <p>
-        Perfect for students and fresh graduates
-        starting their career.
-      </p>
-
-      <button>
-        Create Fresher Resume →
-      </button>
-
-    </div>
-
-
-    <div
-      class="type-card"
-      onclick="startResume()">
-
-      <div class="type-icon">
-        💼
-      </div>
-
-      <h3>
-        Experienced
-      </h3>
-
-      <p>
-        Showcase your experience, skills,
-        projects and achievements.
-      </p>
-
-      <button>
-        Create Experienced Resume →
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section
-  class="about"
-  id="about">
-
-  <div>
-
-    <span>ABOUT RESUME BUILDER PRO</span>
-
-    <h2>
-      Your Career Starts With
-      a Great Resume.
-    </h2>
-
-    <p>
-      Resume Builder Pro makes it easy to create
-      a modern and professional resume without
-      spending hours formatting documents.
-    </p>
+  <div class="bottom">
 
     <button
-      class="primary-btn"
-      onclick="startResume()">
-      Build My Resume →
+      class="create-btn"
+      onclick="openResume()">
+      Start Building Your Resume →
     </button>
 
   </div>
 
-</section>
 
+  <script>
 
-<!-- FOOTER -->
-<footer>
+    function openResume() {
 
-  <div class="footer-logo">
-    ResumeBuilder<span>Pro</span>
-  </div>
+      window.location.href = "resume.html";
 
-  <p>
-    © 2026 Resume Builder Pro. All rights reserved.
-  </p>
+    }
 
-</footer>
+  </script>
 
-
-<script>
-
-function startResume() {
-
-  window.location.href = "resume.html";
-
-}
-
-function scrollToFeatures() {
-
-  document
-    .getElementById("features")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
-
-}
-
-</script>
 
 </body>
 </html>
