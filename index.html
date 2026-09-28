@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Resume Builder</h2>
+
+<div class="resume-type">
+  <h3>Select Resume Type</h3>
+
+  <button type="button" onclick="showFresher()">
+    🎓 Fresher
+  </button>
+
+  <button type="button" onclick="showExperienced()">
+    💼 Experienced
+  </button>
+</div>
+
+<div class="form" id="resumeForm">
+
+  <input id="name" placeholder="Full Name">
+  <input id="role" placeholder="Role (Ex: Web Developer)">
+  <input id="address" placeholder="Address">
+  <input id="phone" placeholder="Phone Number">
+  <input id="email" placeholder="Email">
+  <input id="linkedin" placeholder="LinkedIn URL">
+  <input id="github" placeholder="GitHub URL">
+
+  <label>Upload Photo</label>
+  <input type="file" id="photo" accept="image/*">
+
+  <textarea id="objective" placeholder="Career Objective"></textarea>
+
+  <h3>Education</h3>
+
+  <input id="eq" placeholder="Qualification">
+  <input id="ei" placeholder="Institution">
+  <input id="eb" placeholder="Board">
+  <input id="ey" placeholder="Year">
+  <input id="ep" placeholder="Percentage">
+
+  <button type="button" onclick="addEducation()">
+    Add Education
+  </button>
+
+  <h3>Technical Skills</h3>
+  <textarea id="skills"></textarea>
+
+  <h3>Academic Achievements</h3>
+  <textarea id="academic"></textarea>
+
+  <h3>Extra Curricular Activities</h3>
+  <textarea id="extra"></textarea>
+
+  <h3>Project Details</h3>
+
+<input id="projectTitle" placeholder="Project Title">
+
+<textarea id="projectDesc" placeholder="Project Description"></textarea>
+
+  <h3>Internship</h3>
+
+<input
+  id="internCompany"
+  placeholder="Company Name">
+
+<input
+  id="internRole"
+  placeholder="Role">
+
+<textarea
+  id="internDesc"
+  placeholder="Internship Description">
+</textarea>  <h3>Certificates</h3>
+
+<textarea
+  id="certificates"
+  placeholder="Select Certificate">
+</textarea>
+
+<label>Upload Certificates</label>
+
+<input
+  type="file"
+  id="certificateFiles"
+  accept=".pdf,.jpg,.jpeg,.png"
+  multiple>
+
+ <div id="certificatePreview"></div>
+
+  <h3>Personal Details</h3>
+
+  <input id="dob" type="date">
+
+  <input
+    id="language"
+    placeholder="Languages Known">
+
+  <input
+    id="nationality"
+    placeholder="Nationality">
+
+ <textarea
+  id="strengths"
+  placeholder="Strengths">
+</textarea>
+
+  <h3>Declaration</h3>
+
+  <textarea id="declaration">
+I hereby declare that the details above are correct and true to the best of my knowledge.
+  </textarea>
+
+  <input id="place" placeholder="Place">
+
+  <!-- Correct Date Input -->
+  <input id="date" type="date">
+
+  <button type="button" onclick="generateResume()">
+    Generate Resume
+  </button>
+
+</div>
+
+<hr>
+
+<div id="resume">
+
+  <div class="header">
+
+    <div>
+
+      <h1 id="rname"></h1>
+
+      <h3 id="rrole" class="role"></h3>
+
+      <p>
+        📞 <span id="rphone"></span>
+      </p>
+
+      <p>
+        ✉ <span id="remail"></span>
+      </p>
+
+      <p>
+        🔗 LinkedIn:
+        <span id="rlinkedin"></span>
+      </p>
+
+      <p>
+        💻 GitHub:
+        <span id="rgithub"></span>
+      </p>
+
+    </div>
+
+    <img id="rphoto">
+
+  </div>
+
+  <h3>CAREER OBJECTIVE</h3>
+  <p id="robjective"></p>
+
+  <h3>EDUCATION</h3>
+
+  <table id="eduTable">
+
+    <tr>
+      <th>Qualification</th>
+      <th>Institution</th>
+      <th>Board</th>
+      <th>Year</th>
+      <th>Percentage</th>
+    </tr>
+
+  </table>
+
+  <h3>TECHNICAL SKILLS</h3>
+  <p id="rskills"></p>
+
+  <h3>ACADEMIC ACHIEVEMENTS</h3>
+  <p id="racademic"></p>
+
+  <h3>EXTRA CURRICULAR ACTIVITIES</h3>
+  <p id="rextra"></p>
+
+  <h3>PROJECT DETAILS</h3>
+
+  <p>
+    <b>Title:</b>
+    <span id="rprojectTitle"></span>
+  </p>
+
+  <p id="rprojectDesc"></p>
+
+  <h3>INTERNSHIP</h3>
+
+  <p>
+    <b>Company:</b>
+    <span id="rinternCompany"></span>
+  </p>
+
+  <p>
+    <b>Role:</b>
+    <span id="rinternRole"></span>
+  </p>
+
+  <p id="rinternDesc"></p>
+
+  <h3>CERTIFICATES</h3>
+
+  <ul id="rcertificates"></ul>
+
+  <h3>PERSONAL DETAILS</h3>
+
+  <p>
+    <b>Date of Birth:</b>
+    <span id="rdob"></span>
+  </p>
+
+  <p>
+    <b>Languages Known:</b>
+    <span id="rlanguage"></span>
+  </p>
+
+  <p>
+    <b>Nationality:</b>
+    <span id="rnat"></span>
+  </p>
+
+  <p>
+    <b>Strengths:</b>
+    <span id="rstrength"></span>
+  </p>
+
+  <h3>DECLARATION</h3>
+
+  <p id="rdeclaration"></p>
+
+  <div class="sign-section">
+
+    <div>
+
+      <p>
+        <b>Place:</b>
+        <span id="rplace"></span>
+      </p>
+
+      <p>
+        <b>Date:</b>
+        <span id="rdate"></span>
+      </p>
+
+    </div>
+
+    <div class="signature-box">
+
+      <p><b>Signature</b></p>
+
+      <div class="sign-line"></div>
+
+      <p id="rsignName"></p>
+
+    </div>
+
+  </div>
+
+  <button
+    id="printBtn"
+    onclick="window.print()">
+    Print Resume
+  </button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

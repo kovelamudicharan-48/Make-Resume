@@ -1,0 +1,97 @@
+body {
+  font-family: Arial;
+  background: #f4f6f9;
+  padding: 20px;
+}
+
+.form, #resume {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px;
+}
+
+button {
+  background: #1f3c88;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#resume {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #1f3c88;
+}
+
+#rphoto {
+  width: 120px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.role {
+  color: gray;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+.sign-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+/* ✅ Signature Line Added */
+.signature-box {
+  text-align: center;
+  width: 200px;
+}
+
+.sign-line {
+  border-bottom: 2px solid black;
+  width: 180px;
+  margin: 40px auto 10px auto;
+}
+
+@media print {
+  body * { visibility: hidden; }
+  #resume, #resume * { visibility: visible; }
+
+  #resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform: scale(0.85);
+    transform-origin: top left;
+  }
+
+  #printBtn {
+    display: none;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+}
