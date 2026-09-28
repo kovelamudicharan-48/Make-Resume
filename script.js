@@ -37,50 +37,7 @@ function generateResume() {
   get("rinternDesc").innerText =
     safe(get("internDesc").value);
 
-  // Certificates
-  const certList = get("rcertificates");
-
-  certList.innerHTML = "";
-
-  const certificateFiles =
-    get("certificateFiles");
-
-  if (certificateFiles.files.length > 0) {
-
-    Array.from(certificateFiles.files).forEach((file) => {
-
-      const li =
-        document.createElement("li");
-
-      const link =
-        document.createElement("a");
-
-      link.innerText =
-        "📜 " + file.name;
-
-      link.href =
-        URL.createObjectURL(file);
-
-      link.target = "_blank";
-
-      link.style.cursor = "pointer";
-
-      li.appendChild(link);
-
-      certList.appendChild(li);
-
-    });
-
-  } else {
-
-    const li =
-      document.createElement("li");
-
-    li.innerText = "N/A";
-
-    certList.appendChild(li);
-
-  }
+  
 
   // Personal Details
   get("rdob").innerText =
